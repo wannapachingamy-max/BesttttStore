@@ -661,8 +661,9 @@ Line Official
 <p id="modal-product-desc" class="text-sm font-medium text-gray-600 mt-1 whitespace-pre-line leading-relaxed"></p>
 </div>
 <div class="flex gap-3 w-full">
-<button id="modal-order-btn" onclick="window.open('https://facebook.com', '_blank')" class="flex-1 bg-themeNavy text-white py-3.5 rounded-2xl font-bold text-sm shadow-md hover:bg-blue-900 transition-colors btn-press flex items-center justify-center gap-2">
-<i class="fa-brands fa-facebook-messenger text-xl"></i> ทักแชทสั่งซื้อเลย
+<!-- เปลี่ยนปุ่ม ทักแชทสั่งซื้อ ให้เป็นลิงก์ LINE ที่ระบุ -->
+<button id="modal-order-btn" onclick="window.open('https://lin.ee/Q9iWJM5', '_blank')" class="flex-1 bg-green-500 text-white py-3.5 rounded-2xl font-bold text-sm shadow-md hover:bg-green-600 transition-colors btn-press flex items-center justify-center gap-2">
+<i class="fa-brands fa-line text-xl"></i> ทัก LINE สั่งได้เลย
 </button>
 </div>
 </div>
@@ -1026,10 +1027,9 @@ document.getElementById('modal-product-img').classList.add('grayscale-[40%]', 'o
 } else {
 statusBadge.className = "px-3 py-1.5 rounded-full text-[10px] font-bold border shadow-sm flex items-center gap-1.5 bg-green-50 text-green-700 border-green-200 tracking-wide";
 statusBadge.innerHTML = '<span class="relative flex h-1.5 w-1.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span></span> พร้อมส่งเลย!';
-orderBtn.innerHTML = '<i class="fa-brands fa-facebook-messenger text-lg"></i> ทักแชทสั่งซื้อเลย';
-orderBtn.className = "flex-1 bg-themeNavy text-white py-3.5 rounded-2xl font-bold text-sm shadow-md hover:bg-blue-900 transition-colors btn-press flex items-center justify-center gap-2";
-const fbLink = document.getElementById('editFacebookLink').value || 'https://facebook.com';
-orderBtn.onclick = () => window.open(fbLink, '_blank');
+orderBtn.innerHTML = '<i class="fa-brands fa-line text-lg"></i> ทัก LINE สั่งได้เลย'; // เปลี่ยนข้อความและไอคอน
+orderBtn.className = "flex-1 bg-green-500 text-white py-3.5 rounded-2xl font-bold text-sm shadow-md hover:bg-green-600 transition-colors btn-press flex items-center justify-center gap-2"; // เปลี่ยนสีปุ่มเป็นสีเขียว
+orderBtn.onclick = () => window.open('https://lin.ee/Q9iWJM5', '_blank'); // ใส่ลิงก์ LINE ที่ให้มา
 document.getElementById('modal-product-img').classList.remove('grayscale-[40%]', 'opacity-90');
 }
 const modal = document.getElementById('product-modal');
