@@ -54,7 +54,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body {
@@ -146,6 +146,16 @@
             pointer-events: none;
             opacity: 0.9;
         }
+
+        /* ฟอนต์ชื่อร้าน ลายมืออ้วนกลม สีน้ำเงิน-แดง ขอบหนาขึ้นเพื่อความอ้วนกลมสะใจ */
+        .cute-store-title {
+            font-family: 'Itim', 'Kanit', cursive;
+            color: #132A53; /* สีน้ำเงินเข้ม */
+            -webkit-text-stroke: 3.5px #ffffff; /* ขอบขาวหนาขึ้นให้อ้วนกลม */
+            text-shadow: 6px 6px 0px #D41C1E; /* เงาบล็อกสีแดงสดหนาๆ */
+            letter-spacing: 1.5px;
+            padding-bottom: 10px; /* กันเงาด้านล่างโดนตัด */
+        }
     </style>
 </head>
 <body class="text-gray-800 font-sans pb-24 relative bg-bgCream">
@@ -215,7 +225,7 @@
                     <div id="display-banner-placeholder" class="absolute inset-0 flex items-center justify-center text-gray-300">
                         <i class="fa-solid fa-image text-5xl"></i>
                     </div>
-                    <!-- Status Pill (Moved to float on banner) -->
+                    <!-- Status Pill -->
                     <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-4 py-1.5 flex items-center gap-2 z-20 shadow-sm border border-white/50">
                         <div class="relative flex h-2.5 w-2.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -238,13 +248,13 @@
                         <div class="absolute -bottom-1 -left-1 text-2xl animate-float" style="animation-delay: 1s">❤️</div>
                     </div>
 
-                    <!-- Title -->
-                    <h1 id="display-store-name" class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-themeNavy mb-5 text-center z-10 tracking-tight transition-all">
-                        ...
+                    <!-- Title ฟอนต์อ้วนกลมสุดน่ารัก -->
+                    <h1 id="display-store-name" class="cute-store-title text-[3rem] md:text-6xl lg:text-[5.5rem] mb-6 text-center z-10 transition-all leading-tight">
+                        BesttttStore
                     </h1>
 
                     <!-- Chat Bubble Quote -->
-                    <div class="bg-themeNavy/5 backdrop-blur-md text-themeNavy rounded-3xl rounded-tl-sm p-5 md:p-6 shadow-inner-cute relative z-10 max-w-2xl w-full mx-auto text-center border border-themeNavy/10 transition-all">
+                    <div class="bg-themeNavy/5 backdrop-blur-md text-themeNavy rounded-3xl rounded-tl-sm p-5 md:p-6 shadow-inner-cute relative z-10 max-w-2xl mx-auto text-center border border-themeNavy/10 transition-all">
                         <i class="fa-solid fa-quote-left text-themeNavy/20 text-3xl absolute top-3 left-4"></i>
                         <p id="display-welcome-text" class="font-medium text-sm md:text-base leading-relaxed relative z-10 px-2 md:px-6 whitespace-pre-line text-themeNavy/80">กำลังโหลดข้อมูลร้าน...</p>
                     </div>
@@ -537,8 +547,8 @@
                     <div class="space-y-3">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-bold text-themeNavy/80 mb-1 ml-1">ชื่อร้าน</label>
-                                <input type="text" id="editStoreName" class="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm focus:outline-none focus:border-themeNavy/50 font-medium" value="">
+                                <label class="block text-xs font-bold text-themeNavy/80 mb-1 ml-1">ชื่อร้าน <span class="text-themeRed">(ไม่สามารถแก้ไขได้)</span></label>
+                                <input type="text" id="editStoreName" class="w-full bg-gray-100 border border-gray-200 rounded-xl p-2.5 text-sm focus:outline-none font-medium text-gray-500 cursor-not-allowed" value="" readonly>
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-themeNavy/80 mb-1 ml-1">ข้อความป้ายสีเขียว</label>
@@ -932,7 +942,7 @@
             const icon = document.getElementById('toast-icon');
             const msg = document.getElementById('toast-message');
             
-            msg.textContent = message; // Safe injection
+            msg.textContent = message; 
             
             if (type === 'success') {
                 icon.innerHTML = '<i class="fa-solid fa-circle-check text-green-500"></i>';
@@ -1038,7 +1048,6 @@
                            <span class="text-[9px] font-bold text-themeNavy tracking-wide uppercase">พร้อมส่ง</span>
                        </div>`;
 
-                // Safe structure with HTML tags but empty content slots to be filled
                 card.innerHTML = `
                     <div class="rounded-2xl overflow-hidden mb-3 relative pb-[100%] bg-gray-50 border border-gray-100 ${isOut ? 'grayscale-[40%] opacity-90' : ''}">
                         <img src="" alt="Product Image" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" id="img-${product.id}">
@@ -1056,7 +1065,6 @@
                     </div>
                 `;
 
-                // Safe data insertion
                 card.querySelector(`#img-${product.id}`).src = product.image_url || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
                 card.querySelector(`#cat-${product.id}`).textContent = product.categories?.name || 'ไม่มีหมวดหมู่';
                 card.querySelector(`#name-${product.id}`).textContent = product.name;
@@ -1105,7 +1113,7 @@
             select.innerHTML = '<option value="">ไม่มีหมวดหมู่</option>';
             dbCategories.forEach(cat => {
                 const option = document.createElement('option');
-                option.value = cat.id; // ใช้ UUID เป็น value สำหรับ Foreign Key
+                option.value = cat.id; 
                 option.textContent = cat.name;
                 select.appendChild(option);
             });
@@ -1127,7 +1135,7 @@
                 if (error) throw error;
                 input.value = '';
                 showToast(`เพิ่มหมวดหมู่เรียบร้อย`, 'success');
-                await fetchCategories(); // refresh list
+                await fetchCategories(); 
             } catch (err) {
                 console.error(err);
                 showToast(err.message || 'เกิดข้อผิดพลาดในการเพิ่ม', 'error');
@@ -1154,7 +1162,7 @@
                 }
                 showToast(`ลบหมวดหมู่เรียบร้อย`, 'success');
                 await fetchCategories();
-                renderProducts(); // Refresh layout
+                renderProducts(); 
             } catch (err) {
                 console.error(err);
                 showToast('เกิดข้อผิดพลาด', 'error');
@@ -1192,7 +1200,6 @@
                 orderBtn.innerHTML = '<i class="fa-brands fa-facebook-messenger text-lg"></i> ทักแชทสั่งซื้อเลย';
                 orderBtn.className = "flex-1 bg-themeNavy text-white py-3.5 rounded-2xl font-bold text-sm shadow-md hover:bg-blue-900 transition-colors btn-press flex items-center justify-center gap-2";
                 
-                // ดึงลิงก์ติดต่อจากตั้งค่า หรือไปเฟสบุ๊คหลักถ้าไม่ได้ตั้ง
                 const fbLink = document.getElementById('editFacebookLink').value || 'https://facebook.com';
                 orderBtn.onclick = () => window.open(fbLink, '_blank');
                 document.getElementById('modal-product-img').classList.remove('grayscale-[40%]', 'opacity-90');
@@ -1481,10 +1488,10 @@
                 if (error) throw error;
                 
                 showToast('บันทึกการตั้งค่าเรียบร้อย ✨', 'success');
-                await fetchStoreSettings(); // update display
+                await fetchStoreSettings(); 
             } catch (err) {
                 console.error(err);
-                showToast('เกิดข้อผิดพลาดในการบันทึก (ลืมสร้างคอลัมน์เฟส/ไลน์ในฐานข้อมูลหรือเปล่า?)', 'error');
+                showToast('เกิดข้อผิดพลาดในการบันทึก', 'error');
             } finally {
                 btnElement.disabled = false;
                 spanText.textContent = ogText;
@@ -1527,8 +1534,8 @@
                     showToast('เพิ่มสินค้าสำเร็จ! 🛒', 'success');
                 }
 
-                cancelEditProduct(); // เคลียร์ฟอร์มและโหมด
-                await fetchProducts(); // refresh products
+                cancelEditProduct(); 
+                await fetchProducts(); 
                 
                 currentCategory = "ทั้งหมด";
                 switchView('products-view'); 
