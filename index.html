@@ -22,6 +22,7 @@ accentYellow: '#FFECB3'
 },
 fontFamily: {
 sans: ['Kanit', 'sans-serif'],
+cute: ['Mali', 'cursive'], /* เพิ่มฟอนต์น่ารักสำหรับชื่อร้าน */
 },
 boxShadow: {
 'sm': '0 4px 6px rgba(19, 42, 83, 0.05)',
@@ -52,7 +53,8 @@ wiggle: {
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- นำเข้าฟอนต์ Kanit (ปกติ) และ Mali (ฟอนต์น่ารักสำหรับชื่อร้าน) -->
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Mali:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 body {
 background-color: #FFF8E7;
@@ -212,8 +214,8 @@ opacity: 0.9;
 <div class="absolute -top-1 -right-1 text-2xl animate-float">⭐</div>
 <div class="absolute -bottom-1 -left-1 text-2xl animate-float" style="animation-delay: 1s">❤️</div>
 </div>
-<!-- Title ฟอนต์ปกติ (Kanit) เปลี่ยนเป็นสีน้ำเงิน (text-blue-600) -->
-<h1 id="display-store-name" class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-blue-600 mb-5 text-center z-10 tracking-tight transition-all">
+<!-- Title ฟอนต์ Mali (font-cute) และสีน้ำเงินเข้มเหมือนเมนูสินค้า (text-themeNavy) -->
+<h1 id="display-store-name" class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-themeNavy font-cute mb-5 text-center z-10 tracking-tight transition-all">
 BesttttStore
 </h1>
 <!-- Chat Bubble Quote -->
