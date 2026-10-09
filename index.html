@@ -47,8 +47,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- นำเข้าฟอนต์ลายมืออ้วนกลมแบบใน Reference image_2.png -->
-<link href="https://fonts.googleapis.com/css2?family=Mali:wght@600;700&family=Prompt:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
     body {
@@ -139,15 +138,6 @@
         z-index: 0;
         pointer-events: none;
         opacity: 0.9;
-    }
-
-    /* ฟอนต์ชื่อร้านตามแบบรูปภาพที่แนบ (สีม่วงอ้วนกลมสไตล์ Mali/Prompt) */
-    .cute-store-title {
-        font-family: 'Mali', 'Prompt', cursive, sans-serif;
-        color: #8b5cf6; /* สีม่วงตามเรฟ image_2.png */
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        text-shadow: 2px 2px 0px rgba(139, 92, 246, 0.15);
     }
 </style>
 
@@ -240,8 +230,8 @@
                     <div class="absolute -bottom-1 -left-1 text-2xl animate-float" style="animation-delay: 1s">❤️</div>
                 </div>
 
-                <!-- Title ฟอนต์ชื่อร้านตามแบบ Reference image_2.png -->
-                <h1 id="display-store-name" class="cute-store-title text-[3.2rem] md:text-6xl lg:text-[5.5rem] mb-6 text-center z-10 transition-all leading-tight">
+                <!-- Title ฟอนต์ปกติ (Kanit) ตามต้นฉบับ -->
+                <h1 id="display-store-name" class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-themeNavy mb-5 text-center z-10 tracking-tight transition-all">
                     BesttttStore
                 </h1>
 
@@ -831,6 +821,7 @@
     }
 
     function applyStoreSettings(data) {
+        // Apply to Display UI safely using textContent
         document.getElementById('display-store-name').textContent = data.store_name || 'BesttttStore';
         document.getElementById('display-status').textContent = data.status_text || 'เว็บไซต์เช็คสินค้า 24 ช.ม';
         document.getElementById('display-welcome-text').textContent = data.welcome_text || '';
@@ -838,8 +829,9 @@
         document.getElementById('display-account-name').textContent = data.account_name || '';
         document.getElementById('display-account-number').textContent = data.account_number || '';
         
+        // Format multiline warning text
         const warningEl = document.getElementById('display-payment-warning');
-        warningEl.innerHTML = ''; 
+        warningEl.innerHTML = ''; // clear
         const warningSpan = document.createElement('span');
         warningSpan.textContent = data.payment_warning || '';
         warningSpan.innerHTML = warningSpan.innerHTML.replace(/\n/g, '<br>');
@@ -848,6 +840,7 @@
         currentAccountNumber = data.account_number || '';
         if (data.credit_link) document.getElementById('modal-credit-link').href = data.credit_link;
 
+        // ตั้งค่าลิงก์ติดต่อ
         const fbBtn = document.getElementById('contact-fb-btn');
         const lineBtn = document.getElementById('contact-line-btn');
         if (data.facebook_link) {
@@ -892,6 +885,7 @@
             creditFullImg.classList.remove('hidden');
             document.getElementById('credit-empty-msg').classList.add('hidden');
             
+            // Admin prepopulate
             document.getElementById('admin-credit-preview').src = data.credit_image_url;
             document.getElementById('admin-credit-preview').classList.remove('hidden');
             document.getElementById('admin-credit-icon').classList.add('hidden');
@@ -911,6 +905,7 @@
             document.getElementById('display-payment-qr').classList.add('hidden');
         }
 
+        // Fill admin form safely
         document.getElementById('editStoreName').value = data.store_name || '';
         document.getElementById('editStatus').value = data.status_text || '';
         document.getElementById('editWelcome').value = data.welcome_text || '';
@@ -1027,12 +1022,12 @@
             
             const statusTag = isOut
                 ? `<div class="absolute top-2 left-2 bg-gray-100/95 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1 shadow-sm border border-gray-200">
-                       <i class="fa-solid fa-circle-xmark text-gray-400 text-[9px]"></i>
-                       <span class="text-[9px] font-bold text-gray-500 tracking-wide uppercase">ของหมด</span>
+                        <i class="fa-solid fa-circle-xmark text-gray-400 text-[9px]"></i>
+                        <span class="text-[9px] font-bold text-gray-500 tracking-wide uppercase">ของหมด</span>
                    </div>`
                 : `<div class="absolute top-2 left-2 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1 shadow-sm border border-gray-100">
-                       <span class="relative flex h-1.5 w-1.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span></span>
-                       <span class="text-[9px] font-bold text-themeNavy tracking-wide uppercase">พร้อมส่ง</span>
+                        <span class="relative flex h-1.5 w-1.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span></span>
+                        <span class="text-[9px] font-bold text-themeNavy tracking-wide uppercase">พร้อมส่ง</span>
                    </div>`;
 
             card.innerHTML = `
